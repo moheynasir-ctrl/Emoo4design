@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>emoo4design – مجموعة إيمان حميدان الحصرية</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(145deg, #fff5f8 0%, #ffeef4 100%);
+            color: #4a2a2a;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #ffe2ec;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d48c9c;
+            border-radius: 10px;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 20px 0;
+        }
+
+        /* Glassmorphism Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 245, 248, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(212, 140, 156, 0.2);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 12px 0;
+        }
+        .logo h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #d48c9c, #b5677a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .logo p {
+            font-size: 0.7rem;
+            color: #b5677a;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #5a3a3a;
+            font-weight: 600;
+            transition: 0.3s;
+            font-size: 1.05rem;
+            position: relative;
+        }
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #d48c9c;
+            transition: 0.3s;
+            border-radius: 3px;
+        }
+        nav ul li a:hover:after, nav ul li a.active:after {
+            width: 100%;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #d48c9c;
+        }
+
+        /* Hero Section with Animation */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at 20% 30%, #ffecf0, #ffe0e8);
+            margin-top: 70px;
+            border-radius: 0 0 60px 60px;
+            overflow: hidden;
+        }
+        .hero:before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" opacity="0.1"><path fill="%23d48c9c" d="M769 229L1037 260.9M927 880L731 737 520 660 309 737 113 880 113 158 309 81 520 4 731 81 927 158 927 880z"/><circle cx="520" cy="520" r="120"/></svg>') repeat;
+            animation: rotateBg 30s linear infinite;
+        }
+        @keyframes rotateBg {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 40px;
+        }
+        .hero h2 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #b45b6e, #e6a0b0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            color: #6b4a4a;
+            max-width: 650px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        .btn-glow {
+            display: inline-block;
+            background: linear-gradient(95deg, #d48c9c, #c06d82);
+            color: white;
+            padding: 14px 42px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 12px 25px -8px rgba(212, 140, 156, 0.5);
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        .btn-glow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px -8px rgba(212, 140, 156, 0.7);
+            background: linear-gradient(95deg, #c27b8b, #b55c72);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 2.7rem;
+            font-weight: 800;
+            margin: 70px 0 40px;
+            position: relative;
+            color: #b45b6e;
+        }
+        .section-title span {
+            background: linear-gradient(135deg, #d48c9c, #b5677a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .section-title:before {
+            content: '✦';
+            font-size: 2rem;
+            color: #e6a0b0;
+            margin-left: 15px;
+        }
+        .section-title:after {
+            content: '✦';
+            font-size: 2rem;
+            color: #e6a0b0;
+            margin-right: 15px;
+        }
+
+        /* Products Grid - Elegant Cards */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 45px;
+            margin-top: 20px;
+        }
+        .product-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 40px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border: 1px solid rgba(212, 140, 156, 0.2);
+            text-align: center;
+            padding-bottom: 25px;
+        }
+        .product-card:hover {
+            transform: translateY(-12px) scale(1.01);
+            box-shadow: 0 35px 45px -20px rgba(212, 140, 156, 0.4);
+            border-color: rgba(212, 140, 156, 0.5);
+            background: white;
+        }
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+        .product-card h3 {
+            font-size: 1.6rem;
+            margin: 20px 0 5px;
+            font-weight: 700;
+            color: #4a2a2a;
+        }
+        .price {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #d48c9c;
+            margin: 8px 0;
+        }
+        .whatsapp-btn {
+            background: #25D366;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 28px;
+            border-radius: 40px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: scale(1.02);
+        }
+
+        /* About Section - Elegant */
+        .about {
+            background: rgba(255, 235, 240, 0.6);
+            border-radius: 70px;
+            margin: 80px auto;
+            padding: 50px 0;
+            backdrop-filter: blur(4px);
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .about-text h3 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: #b45b6e;
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+            color: #5e3a3a;
+        }
+        .about-img img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 50%;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.1);
+            border: 6px solid #fff3f5;
+        }
+
+        /* Contact */
+        .contact {
+            background: linear-gradient(120deg, #ffeef4, #ffe4ec);
+            border-radius: 60px;
+            padding: 50px 0;
+            margin-top: 40px;
+        }
+        .contact-grid {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .contact-info {
+            flex: 1;
+        }
+        .contact-info h3 {
+            font-size: 2rem;
+            color: #b45b6e;
+            margin-bottom: 25px;
+        }
+        .contact-info p {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+        }
+        .social-links a {
+            color: #d48c9c;
+            font-size: 2rem;
+            margin-left: 20px;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            color: #b45b6e;
+            transform: translateY(-3px);
+        }
+        .contact-form {
+            flex: 1;
+            background: rgba(255,255,240,0.8);
+            backdrop-filter: blur(8px);
+            padding: 30px;
+            border-radius: 50px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            border: 1px solid #f0cfda;
+            border-radius: 60px;
+            background: white;
+            font-family: 'Cairo', sans-serif;
+        }
+        .contact-form button {
+            width: 100%;
+            background: #d48c9c;
+            border: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #311e1e;
+            color: #f4cfda;
+            text-align: center;
+            padding: 35px;
+            margin-top: 70px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background: rgba(255,245,248,0.96);
+                backdrop-filter: blur(12px);
+                position: absolute;
+                top: 70px;
+                right: 0;
+                left: 0;
+                padding: 25px;
+                gap: 20px;
+                text-align: center;
+                border-radius: 30px;
+            }
+            nav ul.active {
+                display: flex;
+            }
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-content">
+        <div class="logo">
+            <h1>emoo4design</h1>
+            <p>Haute Couture Bags</p>
+        </div>
+        <div class="menu-toggle" id="menu-toggle"><i class="fas fa-gem"></i></div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="#home" class="active">الرئيسية</a></li>
+                <li><a href="#products">المجموعة</a></li>
+                <li><a href="#about">القصة</a></li>
+                <li><a href="#contact">التواصل</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2 data-aos="fade-up">أناقة لا تُقاوم<br>بصمّة إيمان حميدان</h2>
+            <p data-aos="fade-up" data-aos-delay="100">حقائب تحكي قصتكِ، مصممة بفن وروح عصرية تناسب ملكات الأناقة</p>
+            <a href="#products" class="btn-glow" data-aos="fade-up" data-aos-delay="200">اكتشفي التشكيلة <i class="fas fa-arrow-down"></i></a>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <h2 class="section-title"><span>تصاميم حصرية</span></h2>
+            <div class="products-grid" id="products-grid"></div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container about-content">
+            <div class="about-text" data-aos="fade-right">
+                <h3>المصممة إيمان حميدان</h3>
+                <p>مؤسسة <strong>emoo4design</strong>، شغوفة بتقديم قطع فريدة تجمع بين الفخامة واللمسة الشخصية. كل حقيبة تولد من رؤية فنية تعكس الأنوثة والثقة.</p>
+                <p>أؤمن بأن الإكسسوار المثالي هو ما يجعلكِ تشعرين بأنكِ ملكة. أختار أجود الخامات وأحدث الصيحات لأقدم لكِ ما يستحق أن يكون جزءاً من أسلوبكِ.</p>
+                <p>تواصلي معي، وسأكون سعيدة بإضفاء لمسة من السحر على إطلالتكِ.</p>
+            </div>
+            <div class="about-img" data-aos="fade-left">
+                <img src="https://placehold.co/400x400/f9e0e8/d48c9c?text=إيمان+حميدان" alt="المصممة إيمان">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container contact-grid">
+            <div class="contact-info" data-aos="fade-right">
+                <h3><i class="fas fa-feather-alt"></i> لنبقَ على تواصل</h3>
+                <p><i class="fab fa-whatsapp" style="color:#25D366"></i> +201050422690</p>
+                <p><i class="fas fa-envelope"></i> hello@emoo4design.com</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="contact-form" data-aos="fade-left">
+                <h3>أرسلي استفساركِ</h3>
+                <form action="https://formspree.io/f/your-form-id" method="POST">
+                    <input type="text" name="name" placeholder="الاسم الكامل" required>
+                    <input type="email" name="email" placeholder="بريدك الإلكتروني" required>
+                    <textarea name="message" rows="4" placeholder="رسالتك الجميلة..."></textarea>
+                    <button type="submit" class="btn-glow">أرسلي <i class="fas fa-heart"></i></button>
+                </form>
+                <p style="font-size:12px; margin-top: 12px; text-align:center;">سأرد عليكِ خلال 24 ساعة</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2026 emoo4design – جميع الحقوق محفوظة | تصميم حصري للمصممة إيمان حميدان</p>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 900, once: true });
+
+    const whatsappNumber = "201050422690";
+    const products = [
+        { name: "Black Hand", price: "400 EGP", image: "https://i.ibb.co/WW9mBMcj/IMG.jpg", msg: "أرغب في شراء حقيبة Black Hand" },
+        { name: "Happy Design", price: "400 EGP", image: "https://i.ibb.co/84nN7CFp/IMG.jpg", msg: "أرغب في شراء حقيبة Happy Design" },
+        { name: "A Sky Color", price: "400 EGP", image: "https://i.ibb.co/fGYBRSxw/IMG.jpg", msg: "أرغب في شراء حقيبة A Sky Color" }
+    ];
+
+    function renderProducts() {
+        const grid = document.getElementById('products-grid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        products.forEach((product, idx) => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.setAttribute('data-aos', 'fade-up');
+            card.setAttribute('data-aos-delay', idx * 100);
+            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(product.msg)}`;
+            card.innerHTML = `
+                <img src="${product.image}" alt="${product.name}" onerror="this.src='https://placehold.co/400x500/e6c3cd/d48c9c?text=${encodeURIComponent(product.name)}'">
+                <h3>${product.name}</h3>
+                <div class="price">${product.price}</div>
+                <a href="${whatsappLink}" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> اطلبي الآن</a>
+            `;
+            grid.appendChild(card);
+        });
+        AOS.refresh();
+    }
+
+    // Mobile menu toggle
+    const toggleBtn = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => navMenu.classList.toggle('active'));
+    }
+    document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('click', () => navMenu.classList.remove('active'));
+    });
+
+    // Active link highlight
+    window.addEventListener('scroll', () => {
+        let sections = document.querySelectorAll('section');
+        let scrollPos = window.scrollY + 150;
+        sections.forEach(section => {
+            let top = section.offsetTop;
+            let bottom = top + section.offsetHeight;
+            if (scrollPos >= top && scrollPos < bottom) {
+                let id = section.getAttribute('id');
+                document.querySelectorAll('nav ul li a').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${id}`) link.classList.add('active');
+                });
+            }
+        });
+    });
+
+    renderProducts();
+</script>
+</body>
+</html>
